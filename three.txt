@@ -1,0 +1,59 @@
+// script.js
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const nav = document.getElementById('nav');
+navToggle.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', String(!expanded));
+  nav.style.display = expanded ? 'none' : 'block';
+});
+
+// Sample menu data — edit items here or load JSON externally
+const menuData = [
+  {category:'Starters', items:[
+    {name:'Samosa (2 pcs)', desc:'Crispy pastry stuffed with spiced potatoes & peas', price:'6.50'},
+    {name:'Paneer Tikka', desc:'Marinated cottage cheese, roasted in tandoor', price:'12.00'}
+  ]},
+  {category:'Main Courses', items:[
+    {name:'Butter Chicken', desc:'Creamy tomato gravy, tender chicken', price:'18.50'},
+    {name:'Chana Masala (V)', desc:'Spiced chickpea curry', price:'14.00'}
+  ]},
+  {category:'Biryani & Rice', items:[
+    {name:'Chicken Biryani', desc:'Slow-cooked aromatic rice & chicken', price:'17.50'},
+    {name:'Veg Biryani (V)', desc:'Fragrant rice with seasonal vegetables', price:'15.00'}
+  ]},
+  {category:'Breads & Sides', items:[
+    {name:'Garlic Naan', desc:'Tandoor-baked flatbread', price:'3.50'},
+    {name:'Raita', desc:'Yogurt with cucumber & spices', price:'3.00'}
+  ]}
+];
+
+function renderMenu() {
+  const grid = document.getElementById('menuGrid');
+  menuData.forEach(section => {
+    const col = document.createElement('div');
+    col.className = 'menu-col';
+    const h = document.createElement('h3');
+    h.textContent = section.category;
+    col.appendChild(h);
+    section.items.forEach(it => {
+      const div = document.createElement('div');
+      div.className = 'menu-item';
+      div.innerHTML = `<h4>${it.name} <span style="float:right;font-weight:700">$${it.price}</span></h4>
+                       <p class="muted small">${it.desc}</p>`;
+      col.appendChild(div);
+    });
+    grid.appendChild(col);
+  });
+}
+renderMenu();
+
+// Reservation form handling (uses Formspree — replace with your form endpoint)
+const resForm = document.getElementById('reservationForm');
+resForm.addEventListener('submit', (e) => {
+  // Optional: here we could do client-side validation or analytics
+  // Let the form submit normally to Formspree; you can enhance to use fetch if you prefer.
+  alert('Thank you — your reservation request will be sent. We will call to confirm.');
+});
