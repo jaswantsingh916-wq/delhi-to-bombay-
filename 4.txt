@@ -1,0 +1,6 @@
+<!-- logo.svg - simple editable logo -->
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="100%" height="100%" rx="20" fill="#b22222"/>
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#fff">Delhi</text>
+  <text x="50%" y="72%" dominant-baseline="middle" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#ffebcc">to Bombay</text>
+</svg>
